@@ -9,7 +9,24 @@ import { TypeWriter } from './components/TypeWriter';
 import Fade from 'react-bootstrap/Fade';
 import { ProjectCard } from './components/ProjectCard';
 import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+
+
+
+
 import "./App.css";
+/*
+import emailjs from '@emailjs/browser';
+const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
+};*/
 
 function App() {
   const [showDesc, setShowDesc] = useState(false);
@@ -35,8 +52,8 @@ function App() {
                   Portfolio
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item href="#Contact">
-                <Nav.Link >
+              <Nav.Item >
+                <Nav.Link href="#Contact">
                   Contact
                 </Nav.Link>
               </Nav.Item>
@@ -71,20 +88,40 @@ function App() {
           
           <Row id="Portfolio" className="bg-dark align-items-center justify-content-center text-center h-100 pt-5"> 
             <h5 >Some of my most recent projects</h5>
-            <Col sm={{span:4, order:1}}className="px-0">
+            <Col sm={{span:4, order:1}} className="px-0">
               <ProjectCard imgSrc="shield-exclamation.svg" header="PasswordTester" body="Is your password secure? Check it with this web tool!" />
             </Col>
-            <Col sm={{span:4, order:2}}className="px-0">
+            <Col sm={{span:4, order:2}} className="px-0">
               <ProjectCard imgSrc="./hourglass.svg" header="WebTimeMachine" body="Back to the begginings of the web!"/>
             </Col>
-            <Col sm={{span:4, order:3}}className="px-0">
+            <Col sm={{span:4, order:3}} className="px-0">
               <ProjectCard imgSrc="patch-question.svg" header="Vocabulary quiz" body="Test your english level with this simple game quiz"/>
             </Col>
            
           </Row>
-          <Row id="Portfolio" className="bg-dark align-items-center justify-content-center text-center h-100 pt-5"> 
-            <h5 >Contact</h5>
-           
+          <Row id="Contact" className="bg-dark align-items-center justify-content-center h-100 pt-5"> 
+            <Col sm={{span:6, order:1}}>
+            <Card border="info" bg="dark">
+            <Card.Header>Contact</Card.Header>
+            <Card.Body>
+            <Form>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Name</Form.Label>
+                <Form.Control placeholder="John Doe" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="name@example.com" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Message</Form.Label>
+                <Form.Control as="textarea" rows={3} />
+              </Form.Group>
+
+            </Form>
+            </Card.Body>
+            </Card>
+            </Col>
           </Row>
       </Container>
       </>
