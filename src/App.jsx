@@ -105,7 +105,7 @@ function App() {
                 <img className="mx-1"  width="30" height="30" src="microsoftoffice-color.svg" />
                 <img className="mx-1"  width="40" height="30" src="mysql.svg" />
                 </p>
-                <Button href="/cv-gab-villa.pdf" download> Download CV</Button>
+                <Button variant="primary" href="/cv-gab-villa.pdf" download> Download CV</Button>
                     
               </div>
             </Col>
