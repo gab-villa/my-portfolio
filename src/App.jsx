@@ -4,65 +4,85 @@ import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import Collapse from 'react-bootstrap/Collapse'
 import { TypeWriter } from './components/TypeWriter';
 import Fade from 'react-bootstrap/Fade';
 import { ProjectCard } from './components/ProjectCard';
-import { useState } from 'react';
+import { useState, useRef} from 'react';
 import { Form } from 'react-bootstrap';
 
 
-
-
 import "./App.css";
-/*
-import emailjs from '@emailjs/browser';
-const sendEmail = (e) => {
-  e.preventDefault();
 
-  emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
-};*/
+import emailjs from '@emailjs/browser';
+
 
 function App() {
-  const [showDesc, setShowDesc] = useState(false);
-  return (
-    <>
-      <Container id="intro" className="vh-100 bg-dark text-white" fluid>
-        
-        <Navbar className="mx-auto" fixed="top" bg="dark" variant="dark">
-            <Container className="" fluid>
+  const [formStatus, setFormStatus] = useState("init");
+  const [replyStatus, setReplyStatus] = useState("init");
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+    setTimeout(function() {
+          setFormStatus("typing");
+    }, 4000);
+    emailjs.sendForm('service_3z3rwhm', 'template_93tntyl', form.current, 'JtxBv3vrjZitx3Va3')
+          .then((res) => {
+            setReplyStatus("OK");
+          }, (error) => {
+              setReplyStatus("ERROR");
+          });
+  };
+
+  /*
+  <Container className="" fluid>
              <Row className="justify-content-center w-100">
               <Col sm={2}>
                 <h3>GV</h3>
               </Col>
               <Col sm={6}>
-              <Nav className="float-end">
-            <Nav.Item>
+  */
+  const [showDesc, setShowDesc] = useState(false);
+  return (
+    <>
+      <Container id="intro" className="vh-100 bg-dark text-white" fluid>
+        
+        <Navbar className="px-5 " expand="sm" fixed="top" bg="dark" variant="dark">
+            
+            <Navbar.Brand className="">
+              GV
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbarScroll" />
+              <Navbar.Collapse id="navbarScroll">
+              <Nav navbarScroll className="my-0 w-100 justify-content-center">
+            <Nav.Item className="mx-1">
                 <Nav.Link href="#Home">
                   Home
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+              <Nav.Item className="mx-1">
                 <Nav.Link href="#Portfolio">
                   Portfolio
                 </Nav.Link>
-              </Nav.Item>
-              <Nav.Item >
+              </Nav.Item >
+              <Nav.Item className="mx-1">
                 <Nav.Link href="#Contact">
                   Contact
                 </Nav.Link>
               </Nav.Item>
               
             </Nav>
-              </Col>
-             </Row>
-            
-            </Container>
+            <a href="https://www.linkedin.com/in/gabriel-villa-47a04a1a5/" target="_blank">
+            <img className="my-2 my-sm-0 mx-2 filter-dark-mode" src="linkedin.svg" width="25" height="25"/>
+            </a>
+            <a href="https://github.com/gab-villa" target="_blank">
+            <img className="my-2 my-sm-0 mx-2 filter-dark-mode" src="github.svg" width="25" height="25"/>
+            </a>
+            </Navbar.Collapse>
+              
           </Navbar>
       
         <Row id="Home" className="align-items-center justify-content-center text-center mx-0 h-100">
@@ -74,52 +94,108 @@ function App() {
                     Computer science student from Argentina.
                   </p>
               <div>
+                <p>
                 <img className="mx-1" width="30" height="30" src="react-color.svg" />
                 <img className="mx-1"  width="25" height="25" src="javascript-color.svg" />
                 <img className="mx-1"  width="30" height="30" src="bootstrap-color.svg" />
-               
+                
                 
                 <img className="mx-1"  width="30" height="30" src="java-icon.svg" />
                 <img className="mx-1"  width="25" height="25" src="cplusplus-color.svg" />
                 <img className="mx-1"  width="30" height="30" src="microsoftoffice-color.svg" />
+                <img className="mx-1"  width="40" height="30" src="mysql.svg" />
+                </p>
+                <Button href="/cv-gab-villa.pdf" download> Download CV</Button>
+                    
               </div>
             </Col>
           </Row>
           
-          <Row id="Portfolio" className="bg-dark align-items-center justify-content-center text-center h-100 pt-5"> 
-            <h5 >Some of my most recent projects</h5>
-            <Col sm={{span:4, order:1}} className="px-0">
-              <ProjectCard imgSrc="shield-exclamation.svg" header="PasswordTester" body="Is your password secure? Check it with this web tool!" />
+          <Row id="Portfolio" className="bg-dark align-items-center justify-content-center text-center pt-5"> 
+         
+            <h5  className="pt-2">Some of my most recent projects</h5>
+          
+            <Col xs={{span:8, order:1}} sm={{span:8, order:1}}  md={{span:4, order:1}} xl={{span:3, order:1}} className="py-3 px-0">
+              <ProjectCard
+                hrefView="https://leaked-password-checker.vercel.app/" 
+                hrefRepo="https://github.com/gab-villa/leaked-password-checker"
+                imgSrc="shield-exclamation.svg" 
+                header="PasswordTester" 
+                body="Is your password secure? Check it with this web tool!" 
+              />
             </Col>
-            <Col sm={{span:4, order:2}} className="px-0">
-              <ProjectCard imgSrc="./hourglass.svg" header="WebTimeMachine" body="Back to the begginings of the web!"/>
+            <Col xs={{span:8, order:1}} sm={{span:8, order:2}} md={{span:4, order:1}} xl={{span:3, order:1}} className="py-3 px-0">
+              <ProjectCard 
+                hrefView="https://web-time-machine.vercel.app/"
+                hrefRepo="https://github.com/gab-villa/web-time-machine"
+                imgSrc="./hourglass.svg" 
+                header="WebTimeMachine" 
+                body="Back to the begginings of the web!"
+              />
             </Col>
-            <Col sm={{span:4, order:3}} className="px-0">
-              <ProjectCard imgSrc="patch-question.svg" header="Vocabulary quiz" body="Test your english level with this simple game quiz"/>
+            <Col xs={{span:8, order:1}} sm={{span:8, order:3}} md={{span:4, order:1}} xl={{span:3, order:1}} className="py-3 px-0">
+              <ProjectCard
+              hrefView="http://vocabulary-builder-react.vercel.app/" 
+              hrefRepo="https://github.com/gab-villa/vocabulary-builder-react"
+              imgSrc="patch-question.svg" 
+              header="Vocabulary quiz" 
+              body="Test your english level with this simple game quiz"/>
             </Col>
            
           </Row>
           <Row id="Contact" className="bg-dark align-items-center justify-content-center h-100 pt-5"> 
-            <Col sm={{span:6, order:1}}>
+            <Col sm={{span:10, order:1}} md={{span:8, order:1}} lg={{span:6, order:1}}>
             <Card border="info" bg="dark">
             <Card.Header>Contact</Card.Header>
             <Card.Body>
-            <Form>
+            <Form ref={form} onSubmit={sendEmail}>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Name</Form.Label>
-                <Form.Control placeholder="John Doe" />
-              </Form.Group>
+                <Form.Control
+                  disabled={formStatus == "submitting"}
+                  name="user_name" 
+                  required 
+                  placeholder="John Doe" 
+                />
+                </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control
+               disabled={formStatus == "submitting"}
+                  name="user_email" 
+                  required 
+                  type="email" 
+                  placeholder="name@example.com" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Message</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Control 
+                  disabled={formStatus == "submitting"}
+                  name="message" 
+                  as="textarea" 
+                  rows={3} 
+                />
               </Form.Group>
-
+              <Button 
+                disabled={formStatus == "submitting"}
+                type="submit">
+                  Send now
+              </Button>
             </Form>
             </Card.Body>
+            <Card.Footer> 
+              <Collapse in={replyStatus != "init" && 
+                            formStatus != "submitting"}>
+                <div>
+              <Alert className="text-center" variant={replyStatus == "OK" ? "success" : "danger"}>
+                
+                {replyStatus == "OK" ? "Email sent successfully!":"Something went wrong.."}
+              </Alert>
+              </div>
+              </Collapse>
+            </Card.Footer>
+            
             </Card>
             </Col>
           </Row>
@@ -127,5 +203,5 @@ function App() {
       </>
   );
 }
-
+//  
 export default App
