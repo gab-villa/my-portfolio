@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Collapse from 'react-bootstrap/Collapse'
 import { TypeWriter } from './components/TypeWriter';
-import Fade from 'react-bootstrap/Fade';
 import { ProjectCard } from './components/ProjectCard';
 import { useState, useRef} from 'react';
 import { Form } from 'react-bootstrap';
@@ -30,14 +29,12 @@ function App() {
           setFormStatus("typing");
     }, 4000);
     emailjs.sendForm('service_3z3rwhm', 'template_93tntyl', form.current, 'JtxBv3vrjZitx3Va3')
-          .then((res) => {
+          .then(() => {
             setReplyStatus("OK");
-          }, (error) => {
+          }, () => {
               setReplyStatus("ERROR");
           });
   };
-
-  const [showDesc, setShowDesc] = useState(false);
   return (
     <>
       <Container id="intro" className="vh-100 bg-dark text-white" fluid>
