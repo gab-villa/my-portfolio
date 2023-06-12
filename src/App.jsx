@@ -37,14 +37,6 @@ function App() {
           });
   };
 
-  /*
-  <Container className="" fluid>
-             <Row className="justify-content-center w-100">
-              <Col sm={2}>
-                <h3>GV</h3>
-              </Col>
-              <Col sm={6}>
-  */
   const [showDesc, setShowDesc] = useState(false);
   return (
     <>
@@ -81,6 +73,7 @@ function App() {
             <a href="https://github.com/gab-villa" target="_blank">
             <img className="my-2 my-sm-0 mx-2 filter-dark-mode" src="github.svg" width="25" height="25"/>
             </a>
+
             </Navbar.Collapse>
               
           </Navbar>
@@ -97,13 +90,15 @@ function App() {
                 <p>
                 <img className="mx-1" width="30" height="30" src="react-color.svg" />
                 <img className="mx-1"  width="25" height="25" src="javascript-color.svg" />
+                <img className="mx-1"  width="25" height="25" src="npm.svg" />
                 <img className="mx-1"  width="30" height="30" src="bootstrap-color.svg" />
                 
                 
                 <img className="mx-1"  width="30" height="30" src="java-icon.svg" />
                 <img className="mx-1"  width="25" height="25" src="cplusplus-color.svg" />
                 <img className="mx-1"  width="30" height="30" src="microsoftoffice-color.svg" />
-                <img className="mx-1"  width="40" height="30" src="mysql.svg" />
+                <img className="mx-1"  width="30" height="30" src="sql.png" />
+                <img className="mx-1"  width="25" height="25" src="python.svg" />
                 </p>
                 <Button variant="primary" href="/cv-gab-villa.pdf" download> Download CV</Button>
                     
@@ -115,31 +110,56 @@ function App() {
          
             <h5  className="pt-2">Some of my most recent projects</h5>
           
-            <Col xs={{span:8, order:1}} sm={{span:8, order:1}}  md={{span:4, order:1}} xl={{span:3, order:1}} className="py-3 px-0">
+            <Col xs={{span:8}} sm={{span:8}}  md={{span:5}} lg={{span:4}} xl={{span:3}} className="py-3 px-0">
               <ProjectCard
                 hrefView="https://leaked-password-checker.vercel.app/" 
                 hrefRepo="https://github.com/gab-villa/leaked-password-checker"
                 imgSrc="shield-exclamation.svg" 
                 header="PasswordTester" 
                 body="Is your password secure? Check it with this web tool!" 
-              />
+              >
+                <img className="mx-1" width="30" height="30" src="react-color.svg" />
+                <img className="mx-1"  width="25" height="25" src="javascript-color.svg" />
+                <img className="mx-1"  width="30" height="30" src="bootstrap-color.svg" />
+              </ProjectCard>
             </Col>
-            <Col xs={{span:8, order:1}} sm={{span:8, order:2}} md={{span:4, order:1}} xl={{span:3, order:1}} className="py-3 px-0">
+            <Col xs={{span:8}} sm={{span:8}} md={{span:5}} lg={{span:4}} xl={{span:3}} className="py-3 px-0">
               <ProjectCard 
                 hrefView="https://web-time-machine.vercel.app/"
                 hrefRepo="https://github.com/gab-villa/web-time-machine"
                 imgSrc="./hourglass.svg" 
                 header="WebTimeMachine" 
                 body="Back to the begginings of the web!"
-              />
+              >
+                <img className="mx-1" width="30" height="30" src="react-color.svg" />
+                <img className="mx-1"  width="25" height="25" src="javascript-color.svg" />
+                <img className="mx-1"  width="30" height="30" src="bootstrap-color.svg" />
+              </ProjectCard>
             </Col>
-            <Col xs={{span:8, order:1}} sm={{span:8, order:3}} md={{span:4, order:1}} xl={{span:3, order:1}} className="py-3 px-0">
+            <Col xs={{span:8}} sm={{span:8}} md={{span:5}} lg={{span:4}} xl={{span:3}} className="py-3 px-0">
               <ProjectCard
               hrefView="http://vocabulary-builder-react.vercel.app/" 
               hrefRepo="https://github.com/gab-villa/vocabulary-builder-react"
               imgSrc="patch-question.svg" 
               header="Vocabulary quiz" 
-              body="Test your english level with this simple game quiz"/>
+              body="Test your english level with this simple game quiz">
+                <img className="mx-1" width="30" height="30" src="react-color.svg" />
+                <img className="mx-1"  width="25" height="25" src="javascript-color.svg" />
+                <img className="mx-1"  width="30" height="30" src="bootstrap-color.svg" />
+              </ProjectCard>
+            </Col>
+
+            <Col xs={{span:8}} sm={{span:8}} md={{span:5}} lg={{span:4}} xl={{span:3}} className="py-3 px-0">
+              <ProjectCard
+              hrefView="#" 
+              hrefRepo="https://github.com/gab-villa/sistema-de-reclamos"
+              imgSrc="database.svg" 
+              header="Claim system" 
+              body="An information system to manage claims">
+                <img className="mx-1" width="30" height="30" src="access.svg" />
+                <img className="mx-1" width="30" height="30" src="sql.png" />
+                <img className="mx-1" width="30" height="30" src="vba.png" />
+              </ProjectCard>
             </Col>
            
           </Row>
