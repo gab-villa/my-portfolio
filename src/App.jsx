@@ -105,7 +105,7 @@ function App() {
           
           <Row id="Portfolio" className="bg-dark align-items-center justify-content-center text-center pt-5"> 
          
-            <h5  className="pt-2">⚡ Some of my fave projects ⚡</h5>
+            <h5  className="pt-2">⚡ Some of my faves projects ⚡</h5>
           
             <Col xs={{span:8}} sm={{span:8}}  md={{span:5}} lg={{span:4}} xl={{span:3}} className="py-3 px-0">
               <ProjectCard
