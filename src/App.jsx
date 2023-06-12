@@ -108,7 +108,7 @@ function App() {
           
           <Row id="Portfolio" className="bg-dark align-items-center justify-content-center text-center pt-5"> 
          
-            <h5  className="pt-2">Some of my fave projects</h5>
+            <h5  className="pt-2">⚡ Some of my fave projects ⚡</h5>
           
             <Col xs={{span:8}} sm={{span:8}}  md={{span:5}} lg={{span:4}} xl={{span:3}} className="py-3 px-0">
               <ProjectCard
@@ -166,7 +166,7 @@ function App() {
           <Row id="Contact" className="bg-dark align-items-center justify-content-center h-100 pt-5"> 
             <Col sm={{span:10, order:1}} md={{span:8, order:1}} lg={{span:6, order:1}}>
             <Card border="info" bg="dark">
-            <Card.Header>Contact</Card.Header>
+            <Card.Header>Get in touch with me </Card.Header>
             <Card.Body>
             <Form ref={form} onSubmit={sendEmail}>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
